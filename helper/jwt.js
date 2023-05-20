@@ -7,7 +7,8 @@ const authorization = (req, res, next) => {
 
   if (!token) {
     user.isAuth = false;
-    return next(new Error(401, "please provide token"));
+    throw new Error(401, "Not Authorized");
+    // return next(new Error(401, "please provide token"));
   }
   jwt.verify(token, SECRET, function (error, decoded) {
     if (error) {

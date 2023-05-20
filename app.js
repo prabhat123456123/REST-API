@@ -24,10 +24,10 @@ app
   .use(bodyParser.json({ limit: "100mb" }))
   .use(express.static(path.join(__dirname, "public")));
 
-app.use((req, res, next) => {
-  console.log(req.originalUrl);
-  next();
-});
+// app.use((req, res, next) => {
+//   console.log(req.originalUrl);
+//   next();
+// });
 
 const user = require("./routes/user/user");
 
@@ -36,8 +36,17 @@ const task = require("./routes/task/task");
 app.use("/user", user);
 app.use("/task", authorization, task);
 
+app.use((req, res, next) => {
+  const err = new Error("Not Found");
+  err.status = 404;
+  next(err);
+});
+
 app.use((err, req, res, next) => {
-  handleError(err, req, res);
+  res.locals.error = err;
+  const status = err.status || 500;
+  res.status(status);
+  next(err);
 });
 
 app.listen(APPPORT, () => {
