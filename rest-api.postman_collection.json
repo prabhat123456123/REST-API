@@ -1,0 +1,269 @@
+{
+	"info": {
+		"_postman_id": "95d8a774-7e20-4b51-9b21-01a86b56098b",
+		"name": "rest-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15920937"
+	},
+	"item": [
+		{
+			"name": "task",
+			"item": [
+				{
+					"name": "task list",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjpbeyJpZCI6MTUsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJsbGxsQGdtYWlsLmNvbSIsInBob25lIjoiNjU2NTY2IiwicGFzc3dvcmQiOiIkMmEkMDgkc044ck4yc2RRWHYxRTFpTm1jNWNhLmZ1WGdHeFFRLmJhb0ZLeWQ4dnNZOUpVZnljUDB5MUciLCJjcmVhdGVkX2F0IjoiMjAyMy0wNS0xOVQxOTo0MzoxNy4wMDBaIn1dLCJpYXQiOjE2ODQ1NzA0MTl9.zHUhsOuXfVz70DpJnfeP5xW-ENJeF-Pk0-3hMY7FWTQ",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:7111/task/tasks-list?page=1&limit=3&column=title&direction=desc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7111",
+							"path": [
+								"task",
+								"tasks-list"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "3"
+								},
+								{
+									"key": "column",
+									"value": "title"
+								},
+								{
+									"key": "direction",
+									"value": "desc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "task details",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjpbeyJpZCI6MTUsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJsbGxsQGdtYWlsLmNvbSIsInBob25lIjoiNjU2NTY2IiwicGFzc3dvcmQiOiIkMmEkMDgkc044ck4yc2RRWHYxRTFpTm1jNWNhLmZ1WGdHeFFRLmJhb0ZLeWQ4dnNZOUpVZnljUDB5MUciLCJjcmVhdGVkX2F0IjoiMjAyMy0wNS0xOVQxOTo0MzoxNy4wMDBaIn1dLCJpYXQiOjE2ODQ1NzA0MTl9.zHUhsOuXfVz70DpJnfeP5xW-ENJeF-Pk0-3hMY7FWTQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:7111/task/tasks-details/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7111",
+							"path": [
+								"task",
+								"tasks-details",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Task Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjpbeyJpZCI6MTUsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJsbGxsQGdtYWlsLmNvbSIsInBob25lIjoiNjU2NTY2IiwicGFzc3dvcmQiOiIkMmEkMDgkc044ck4yc2RRWHYxRTFpTm1jNWNhLmZ1WGdHeFFRLmJhb0ZLeWQ4dnNZOUpVZnljUDB5MUciLCJjcmVhdGVkX2F0IjoiMjAyMy0wNS0xOVQxOTo0MzoxNy4wMDBaIn1dLCJpYXQiOjE2ODQ1NzA0MTl9.zHUhsOuXfVz70DpJnfeP5xW-ENJeF-Pk0-3hMY7FWTQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:7111/task/delete-tasks/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7111",
+							"path": [
+								"task",
+								"delete-tasks",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "save task",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjpbeyJpZCI6MTUsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJsbGxsQGdtYWlsLmNvbSIsInBob25lIjoiNjU2NTY2IiwicGFzc3dvcmQiOiIkMmEkMDgkc044ck4yc2RRWHYxRTFpTm1jNWNhLmZ1WGdHeFFRLmJhb0ZLeWQ4dnNZOUpVZnljUDB5MUciLCJjcmVhdGVkX2F0IjoiMjAyMy0wNS0xOVQxOTo0MzoxNy4wMDBaIn1dLCJpYXQiOjE2ODQ1NzA0MTl9.zHUhsOuXfVz70DpJnfeP5xW-ENJeF-Pk0-3hMY7FWTQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"title\":\"hokok\",\r\n    \"description\":\"hoko2222k\",\r\n    \"status\":\"pending\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:7111/task/save-tasks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7111",
+							"path": [
+								"task",
+								"save-tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update task",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjpbeyJpZCI6MTUsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJsbGxsQGdtYWlsLmNvbSIsInBob25lIjoiNjU2NTY2IiwicGFzc3dvcmQiOiIkMmEkMDgkc044ck4yc2RRWHYxRTFpTm1jNWNhLmZ1WGdHeFFRLmJhb0ZLeWQ4dnNZOUpVZnljUDB5MUciLCJjcmVhdGVkX2F0IjoiMjAyMy0wNS0xOVQxOTo0MzoxNy4wMDBaIn1dLCJpYXQiOjE2ODQ1NzA0MTl9.zHUhsOuXfVz70DpJnfeP5xW-ENJeF-Pk0-3hMY7FWTQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"lolol\",\r\n    \"description\":\"hoko2222k\",\r\n    \"status\":\"pending\"\r\n   \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:7111/task/update-tasks/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7111",
+							"path": [
+								"task",
+								"update-tasks",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "registeration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"test\",\r\n    \"email\":\"llll@gmail.com\",\r\n    \"phone\":\"656566\",\r\n    \"password\":\"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:7111/user/save-user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7111",
+							"path": [
+								"user",
+								"save-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"llll@gmail.com\",\r\n    \"password\":\"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:7111/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7111",
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
