@@ -1,0 +1,16 @@
+Folder Structure:-
+
+// config - for database connection
+// controller - for all the logic and redirec
+// helper - some function which helps in code.
+// routes- all the routes related this project 
+// services- this folder contains database related query 
+// test - this folder contains test case of api
+// utils- some constant and user type i mentioned in this folder.
+
+// for running this application we type the command 
+// nodemon app.js
+
+// for running test case we type command 
+// npm run test test/task/task.js
+
