@@ -1,16 +1,4 @@
-module.exports = {
-  //   openapi: "3.0.0",
-  //   info: {
-  //     title: "Aggricultural Project API",
-  //     version: "1.0.0",
-  //     description: "Your API description",
-  //   },
-  //   servers: [
-  //     {
-  //       url: "http://localhost:7111", // Replace with your API's base URL
-  //       description: "Development Server",
-  //     },
-  //   ],
+const swaggerDefinition = {
   swagger: "2.0",
   info: {
     description:
@@ -25,11 +13,33 @@ module.exports = {
       name: "Apache 2.0",
       url: "http://www.apache.org/licenses/LICENSE-2.0.html",
     },
-    servers: [
-      {
-        url: "http://localhost:7111", // Replace with your API's base URL
-        description: "Development Server",
-      },
-    ],
   },
+
+  host: "petstore.swagger.io",
+  basePath: "/v2",
+  tags: [
+    {
+      name: "pet",
+      description: "Everything about your Pets",
+      externalDocs: {
+        description: "Find out more",
+        url: "http://swagger.io",
+      },
+    },
+    {
+      name: "store",
+      description: "Access to Petstore orders",
+    },
+    {
+      name: "user",
+      description: "Operations about user",
+      externalDocs: {
+        description: "Find out more about our store",
+        url: "http://swagger.io",
+      },
+    },
+  ],
+  schemes: ["https", "http"],
 };
+
+module.exports = { swaggerDefinition };
