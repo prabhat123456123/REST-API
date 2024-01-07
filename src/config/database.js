@@ -1,6 +1,5 @@
 const Sequelize = require("sequelize");
 
-
 const { host, user, password, database } = require("../utils/Constant");
 
 const sequelize = new Sequelize(
@@ -22,7 +21,7 @@ const sequelize = new Sequelize(
   },
   {
     pool: {
-      max: 1000,
+      max: 5,
       min: 0,
       acquire: 30000,
       idle: 10000,

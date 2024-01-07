@@ -2,6 +2,7 @@ const Sequelize = require("sequelize");
 const { QueryTypes } = require("sequelize");
 const Op = Sequelize.Op;
 const sequelize = require("../../config/database");
+const db = require("../../models");
 const { getDate } = require("../../helper/time");
 const { ErrorHandler } = require("../../helper/error");
 
@@ -29,18 +30,35 @@ module.exports = {
   saveTasks: async (body) => {
     try {
       const currentTime = getDate("YYYY-MM-DD HH:mm:ss");
-      const data = await sequelize.query(
-        "INSERT INTO task(title,description,status,created_at) VALUES (?,?,?,?)",
-        {
-          replacements: [
-            body.title,
-            body.description,
-            body.status,
-            currentTime,
-          ],
-          type: QueryTypes.INSERT,
+      // await db.Contact.create({ address: "Jane", city: "kok", count: 10 });
+      const documents = await db.Contact.findAll({
+        where: { address: "Jane" },
+      });
+      console.log(documents);
+      if (documents.length > 0) {
+        for (const document of documents) {
+          // Increment the 'version' field by 100 for each matching document
+          await document.update({
+            count: Sequelize.literal("count + 100"),
+            city: "lol",
+          });
         }
-      );
+      } else {
+        // Handle the case where no documents are found
+        console.log("No documents found");
+      }
+      // const data = await sequelize.query(
+      //   "INSERT INTO task(title,description,status,created_at) VALUES (?,?,?,?)",
+      //   {
+      //     replacements: [
+      //       body.title,
+      //       body.description,
+      //       body.status,
+      //       currentTime,
+      //     ],
+      //     type: QueryTypes.INSERT,
+      //   }
+      // );
 
       return true;
     } catch (error) {

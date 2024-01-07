@@ -1,17 +1,23 @@
 const express = require("express");
-
+const swaggerUi = require("swagger-ui-express");
+const swaggerJSDoc = require("swagger-jsdoc");
+const swaggerOptions = require("./swagger/swaggerOptions");
 const path = require("path");
 const bodyParser = require("body-parser");
 const helmet = require("helmet");
 const sequelize = require("./config/database");
 const { QueryTypes } = require("sequelize");
-
+require("./models");
 const { APPPORT } = require("./utils/Constant");
 const authorization = require("./helper/jwt");
 
-const { handleError } = require("./helper/error");
+const { handleError } = require("./helper/handleError");
 
 const app = express();
+
+const swaggerSpec = swaggerJSDoc(swaggerOptions);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
 app
   .use(helmet())
   .use(
@@ -35,28 +41,22 @@ const task = require("./routes/task/task");
 
 app.use("/user", user);
 app.use("/task", authorization, task);
-
-app.use((req, res, next) => {
-  const err = new Error("Not Found");
-  err.status = 404;
-  next(err);
-});
-
-app.use((err, req, res, next) => {
-  res.locals.error = err;
-  const status = err.status || 500;
-  res.status(status);
-  next(err);
-});
+// app.use((req, res, next) => {
+//   let err = new Error("Not Found");
+//   err.status = 404;
+//   console.log(req.originalUrl);
+//   next();
+// });
+// app.use(function (err, req, res, next) {
+//   if (err.code !== "EBADCSRFTOKEN") return next(err);
+//   // handle CSRF token errors here
+//   console.log(req.originalUrl, "Error");
+//   next();
+// });
+// app.use(handleError);
 
 app.listen(APPPORT, () => {
   console.log(`Server started on port ${APPPORT}`);
 });
 
-sequelize
-  .sync()
-  .then(() => {})
-  .catch((err) => {
-    throw err;
-  });
 module.exports = app;

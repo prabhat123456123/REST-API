@@ -1,22 +1,20 @@
 const jwt = require("jsonwebtoken");
 const { SECRET } = require("../utils/Constant");
+const { ErrorHandler } = require("./error");
 
 const authorization = (req, res, next) => {
   const token = req.headers.token,
     user = {};
 
   if (!token) {
-    user.isAuth = false;
-    throw new Error(401, "Not Authorized");
+    return next(new ErrorHandler("login first to access resources", 400));
     // return next(new Error(401, "please provide token"));
   }
   jwt.verify(token, SECRET, function (error, decoded) {
     if (error) {
-      user.isAuth = false;
-      return next();
+      return next(new ErrorHandler("token not Verified", 400));
     } else {
-      user.isAuth = true;
-      user.type = decoded.data[0].id;
+      user.detail = decoded.data[0];
       req.user = user;
       next();
     }
