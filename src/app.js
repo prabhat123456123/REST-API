@@ -1,7 +1,7 @@
 const express = require("express");
 const swaggerUi = require("swagger-ui-express");
 const swaggerJSDoc = require("swagger-jsdoc");
-const swaggerOptions = require("./swagger/swaggerOptions");
+const swaggerOptions = require("./swagger/swaggerOptions.js");
 const path = require("path");
 const bodyParser = require("body-parser");
 const helmet = require("helmet");
@@ -15,8 +15,8 @@ const { handleError } = require("./helper/handleError");
 
 const app = express();
 
-const swaggerSpec = swaggerJSDoc(swaggerOptions);
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+// const swaggerSpec = swaggerJSDoc(swaggerOptions);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerOptions));
 
 app
   .use(helmet())
