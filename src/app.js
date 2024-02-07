@@ -39,8 +39,8 @@ const user = require("./routes/user/user");
 
 const task = require("./routes/task/task");
 
-app.use("/user", user);
-app.use("/task", authorization, task);
+app.use("/v2/user", user);
+app.use("/v2/task", authorization, task);
 // app.use((req, res, next) => {
 //   let err = new Error("Not Found");
 //   err.status = 404;

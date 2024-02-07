@@ -5,6 +5,7 @@ db.sequelize = sequelize;
 // db.Sequelize = Sequelize;
 
 db.Contact = require("./contact")(sequelize, DataTypes, Model);
+db.User = require("./user")(sequelize, DataTypes, Model);
 db.sequelize
   .sync()
   .then(() => {})

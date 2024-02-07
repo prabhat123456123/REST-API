@@ -15,7 +15,7 @@ const swaggerDefinition = {
     },
   },
 
-  host: "petstore.swagger.io",
+  host: "localhost:7111",
   basePath: "/v2",
   tags: [
     {

@@ -11,22 +11,7 @@ const {
   deleteTasks,
 } = require("../../controller/task/task");
 
-/**
- * @swagger
- * /example:
- *   get:
- *     summary: Get an example
- *     description: Retrieve an example resource
- *     responses:
- *       '200':
- *         description: A successful response
- *         content:
- *           application/json:
- *             example:
- *               message: 'Example response'
- */
-
-router.get("/tasks-list", authorizeRoles("user"), tasksList);
+router.get("/tasks-list", tasksList);
 
 router.get("/tasks-details/:id", authorizeRoles("user"), tasksDetails);
 
